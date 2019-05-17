@@ -37,26 +37,39 @@ function isEmpty(stack) {
 
 function isValid(str, stack) {
 
-  if (str.length === 0) {
-    if(char === '') {
-      return true;
-    }
-    return false;
-  }
+  // if (str.length === 0) {
+  //   if(char === '') {
+  //     return true;
+  //   }
+  //   return false;
+  // }
   
   for (let i = 0; i < str.length; i++) {
-    let char = str.charAt(0);
+    let char = str[i];
+
+    if (char === "(" && i == str.length-1){
+      console.log ('missing ) at position:', i)
+    }
     if (char === "(") {
       stack.push(char);
-      char = '';
+    } 
+
+    if (isEmpty(stack) && char === ')'){
+      console.log('Damn fool, missing ( at position:', i)
+   }
+
+    if (char === ")" && !isEmpty(stack)) {
+    stack.pop();
+    console.log('also here')
+    } 
+ 
+    if(i === str.length - 1 && !isEmpty(stack)){
+      console.log('missing a ) at :', i)
     }
-    if (char === ")") {
-      stack.pop();
-      char = '';
-    }
-    
+
+
   }
-  console.log(stack)
+ 
   
 };
 /*
@@ -81,7 +94,8 @@ function main() {
   // console.log(is_palindrome("Tauhida"));
 
   let stackStr = new stack;
-  console.log(isValid('(((()))', stackStr));
+  console.log(isValid('((())', stackStr));
+
 }
 
 main()
