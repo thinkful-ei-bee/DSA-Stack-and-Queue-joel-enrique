@@ -66,18 +66,41 @@ function isValid(str, stack) {
     if(i === str.length - 1 && !isEmpty(stack)){
       console.log('missing a ) at :', i)
     }
-
-
   }
- 
-  
 };
-/*
-tracking  "("  ")"
-use stack to track current location
-if improper closing or opening, report location
 
-*/
+
+function sort(stack, tempStack){
+  tempStack = tempStack;
+
+  let tempVar = stack.pop();
+
+
+// 1. 
+
+
+  while(stack.top !== null){
+    if(isEmpty(tempStack)){
+      tempStack.push(tempVar)
+    }
+    tempVar= stack.pop();
+    if(peek(tempStack) < tempVar){
+      tempStack.push(tempVar);
+    } else{
+      stack.push(tempVar)
+    }
+  }
+ console.log(stack)  
+
+}
+
+
+
+
+
+
+
+
 
 function main() {
   let startrek = new stack;
@@ -93,9 +116,21 @@ function main() {
   // console.log(is_palindrome("1001"));
   // console.log(is_palindrome("Tauhida"));
 
-  let stackStr = new stack;
-  console.log(isValid('((())', stackStr));
+  // let stackStr = new stack;
+  // isValid('((()))', stackStr);
 
+let tempStack = new stack;
+
+  let newStack = new stack;
+  newStack.push('2')
+  newStack.push('3')
+  newStack.push('4')
+  newStack.push('6')
+  newStack.push('5')
+
+
+  sort(newStack, tempStack)
 }
+
 
 main()
