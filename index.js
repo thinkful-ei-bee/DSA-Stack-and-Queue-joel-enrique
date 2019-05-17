@@ -35,31 +35,36 @@ function isEmpty(stack) {
   return false;
 }
 
-function isValid(str, stack, open = 0) {
+function isValid(str, stack) {
+
+  if (str.length === 0) {
+    if(char === '') {
+      return true;
+    }
+    return false;
+  }
   
-  console.log(str)
-  if ((str.length === 0) && (isEmpty)) {
-    return true;
+  for (let i = 0; i < str.length; i++) {
+    let char = str.charAt(0);
+    if (char === "(") {
+      stack.push(char);
+      char = '';
+    }
+    if (char === ")") {
+      stack.pop();
+      char = '';
+    }
+    
   }
-
-  // if (isEmpty(stack)) {
-  //   return true;
-  // }
-  // else {
-  //   return false;
-  // }
+  console.log(stack)
   
-
-  const char = str.charAt(0);
-  if (char === "(") {
-    stack.push(char);
-  }
-  if (char === ")") {
-    stack.pop();
-
-  }
-  //return isValid(str.slice(1), stack, open);
 };
+/*
+tracking  "("  ")"
+use stack to track current location
+if improper closing or opening, report location
+
+*/
 
 function main() {
   let startrek = new stack;
